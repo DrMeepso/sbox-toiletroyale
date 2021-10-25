@@ -1,0 +1,43 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		UI = false
+		Volume = 0.5
+		VolumeRandom = 0.2
+		Pitch = 1.0
+		PitchRandom = 0.5
+		DistanceMax = 1000.0
+		Sounds = 
+		[
+			"sounds/fart1.vsnd",
+			"sounds/fart2.vsnd",
+			"sounds/fart3.vsnd",
+			"sounds/fart4.vsnd",
+			"sounds/fart5.vsnd",
+			"sounds/fart6.vsnd",
+			"sounds/fart7.vsnd",
+			"sounds/fart8.vsnd",
+			"sounds/fart9.vsnd",
+			"sounds/fart10.vsnd",
+			"sounds/fart11.vsnd",
+			"sounds/fart12.vsnd",
+			"sounds/fart13.vsnd",
+			"sounds/fart14.vsnd",
+			"sounds/fart15.vsnd",
+			"sounds/fart16.vsnd",
+			"sounds/fart17.vsnd",
+			"sounds/fart18.vsnd",
+			"sounds/fart19.vsnd",
+			"sounds/fart20.vsnd",
+			"sounds/fart21.vsnd",
+			"sounds/fart22.vsnd",
+			"sounds/fart23.vsnd",
+			"sounds/fart24.vsnd",
+			"sounds/fart25.vsnd",
+			"sounds/fart26.vsnd",
+			"sounds/fart27.vsnd",
+			"sounds/fart28.vsnd",
+		]
+	}
+}
