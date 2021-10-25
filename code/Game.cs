@@ -108,7 +108,7 @@ namespace ToiletRoyale
 						}
 					} );
 
-				_ = new HudEntity();
+				_ = new ToiletRoyaleHud();
 			}
 
 			Current = this;
