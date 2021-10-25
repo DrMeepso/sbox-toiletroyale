@@ -47,11 +47,14 @@ namespace ToiletRoyale
 			{
 				Rand.SetSeed( Time.Tick );
 
-				PlaySound( "fart" );
+				Sound Sound = PlaySound( "fart" + Rand.Int( 1, 28 ) );
 
-				TimeSinceFart = Rand.Float(0.0f, 1.0f);
+				Sound.SetVolume( Rand.Float( 0.5f, 0.8f ) );
+				Sound.SetPitch( Rand.Float( 0.5f, 1.5f ) );
+
+				TimeSinceFart = Rand.Float( 0.0f, 1.0f );
 			}
-			
+
 			SetAnimBool( "b_sit", true );
 		}
 
