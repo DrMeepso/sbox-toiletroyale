@@ -12,7 +12,10 @@ namespace ToiletRoyale
 
 			RootPanel.StyleSheet.Load( "/ui/ToiletRoyaleHud.scss" );
 
-			RootPanel.AddChild<NameTags>();
+			NameTags NameTags = RootPanel.AddChild<NameTags>();
+
+			NameTags.MaxTagsToShow = 8;
+
 			RootPanel.AddChild<ChatBox>();
 			RootPanel.AddChild<VoiceList>();
 		}
