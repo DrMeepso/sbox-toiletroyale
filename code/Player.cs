@@ -18,6 +18,8 @@ namespace ToiletRoyale
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
 
+			DressPlayer();
+
 			Host.AssertServer();
 
 			LifeState = LifeState.Alive;
