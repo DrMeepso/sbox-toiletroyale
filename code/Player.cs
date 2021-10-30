@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using System.Linq;
 
 namespace ToiletRoyale
 {
@@ -33,7 +34,7 @@ namespace ToiletRoyale
 
 			if ( Game != null )
 			{
-				if ( Game.Toilets.Find( toilet => toilet.Claimer == this ) == null ) Game.MoveToEmptyToilet( this );
+				Game.MoveToEmptyToilet( this );
 			}
 
 			ResetInterpolation();
@@ -41,11 +42,11 @@ namespace ToiletRoyale
 
 		public override void Simulate( Client cl )
 		{
-			//Log.Info( this.Position );
 
 			base.Simulate( cl );
 
 			SimulateActiveChild( cl, ActiveChild );
+
 
 			if ( Input.Pressed( InputButton.Attack1 ) && TimeSinceFart > 2.25f )
 			{
@@ -54,7 +55,7 @@ namespace ToiletRoyale
 				Sound Sound = PlaySound( "fart" + Rand.Int( 1, 28 ) );
 
 				Sound.SetVolume( Rand.Float( 0.5f, 0.8f ) );
-				Sound.SetPitch( Rand.Float( 0.5f, 1.5f ) );
+				Sound.SetPitch( Rand.Float( 0.2f, 1.5f ) );
 
 				TimeSinceFart = Rand.Float( 0.0f, 1.0f );
 			}

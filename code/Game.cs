@@ -4,18 +4,11 @@ using System.Collections.Generic;
 
 namespace ToiletRoyale
 {
-	public class Toilet
-	{
-		public Transform Transform;
-		public Entity Claimer;
-	}
 
 	[Library( "toiletroyale", Title = "Toilet Royale" )]
 	public partial class ToiletRoyaleGame : Game
 	{
 		public static new ToiletRoyaleGame Current { get; protected set; }
-
-		public List<Toilet> Toilets = new();
 
 		public ToiletRoyaleGame()
 		{
@@ -54,7 +47,6 @@ namespace ToiletRoyale
 		{
 			if ( cl.Pawn != null )
 			{
-				//Toilets.Find( toilet => toilet.Claimer == cl.Pawn ).Claimer = null;
 				Sound.FromWorld( "toilet-flush", cl.Pawn.Position );
 				var curtoilet = All.OfType<toiletspot>().Where( x => x.Claimer == cl.Pawn );
 				curtoilet.Single().Claimer = null;
