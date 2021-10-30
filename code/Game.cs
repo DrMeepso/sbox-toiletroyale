@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace ToiletRoyale
@@ -20,93 +21,19 @@ namespace ToiletRoyale
 		{
 			if ( IsServer )
 			{
-				Toilets.Add(
+				foreach(toiletspot toilet in All.OfType<toiletspot>() ) 
+				{
+					Toilets.Add(
 					new Toilet()
 					{
 						Transform = new Transform()
 						{
-							Position = new Vector3( 95f, 0, 8.5f ),
-							Rotation = Rotation.FromYaw( 180 ),
+							Position = toilet.Position,
+							Rotation = toilet.Rotation,
 							Scale = 1.2f
 						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( 95f, 64.16f, 8.5f ),
-							Rotation = Rotation.FromYaw( 180 ),
-							Scale = 1.2f
-						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( 95f, 128.3f, 8.5f ),
-							Rotation = Rotation.FromYaw( 180 ),
-							Scale = 1.2f
-						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( 95f, 192.5f, 8.5f ),
-							Rotation = Rotation.FromYaw( 180 ),
-							Scale = 1.2f
-						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( -31f, 0, 8.5f ),
-							Rotation = Rotation.FromYaw( 0 ),
-							Scale = 1.2f
-						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( -31f, 64.16f, 8.5f ),
-							Rotation = Rotation.FromYaw( 0 ),
-							Scale = 1.2f
-						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( -31f, 128.3f, 8.5f ),
-							Rotation = Rotation.FromYaw( 0 ),
-							Scale = 1.2f
-						}
-					} );
-
-				Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = new Vector3( -31f, 192.5f, 8.5f ),
-							Rotation = Rotation.FromYaw( 0 ),
-							Scale = 1.2f
-						}
-					} );
+					} ); ;
+				}
 
 				_ = new ToiletRoyaleHud();
 			}
@@ -114,9 +41,12 @@ namespace ToiletRoyale
 			Current = this;
 		}
 
+
 		public override void ClientJoined( Client client )
 		{
 			base.ClientJoined( client );
+
+			Log.Info(Toilets.Count);
 
 			var player = new ToiletRoyalePlayer();
 			client.Pawn = player;

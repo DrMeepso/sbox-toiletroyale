@@ -41,6 +41,8 @@ namespace ToiletRoyale
 
 		public override void Simulate( Client cl )
 		{
+			//Log.Info( this.Position );
+
 			base.Simulate( cl );
 
 			SimulateActiveChild( cl, ActiveChild );
