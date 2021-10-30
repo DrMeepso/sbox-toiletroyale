@@ -143,7 +143,11 @@ namespace ToiletRoyale
 
 		public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
 		{
-			if ( cl.Pawn != null ) Toilets.Find( toilet => toilet.Claimer == cl.Pawn ).Claimer = null;
+			if ( cl.Pawn != null )
+			{
+				Toilets.Find( toilet => toilet.Claimer == cl.Pawn ).Claimer = null;
+				Sound.FromWorld( "toilet-flush", cl.Pawn.Position );
+			}
 
 			base.ClientDisconnect( cl, reason );
 		}
