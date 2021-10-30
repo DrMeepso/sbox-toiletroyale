@@ -54,8 +54,11 @@ namespace ToiletRoyale
 		{
 			if ( cl.Pawn != null )
 			{
-				Toilets.Find( toilet => toilet.Claimer == cl.Pawn ).Claimer = null;
+				//Toilets.Find( toilet => toilet.Claimer == cl.Pawn ).Claimer = null;
 				Sound.FromWorld( "toilet-flush", cl.Pawn.Position );
+				var curtoilet = All.OfType<toiletspot>().Where( x => x.Claimer == cl.Pawn );
+				curtoilet.Single().Claimer = null;
+
 			}
 
 			base.ClientDisconnect( cl, reason );
