@@ -7,6 +7,7 @@ using System;
 [Hammer.EntityTool( "Player Spawnpoint", "Death", "Defines a point where a player can spawn" )]
 public partial class toiletspot : Prop
 {
+	public Entity Claimer;
 	public override void Spawn()
 	{
 		Log.Info( "Spawned Toilet" );

@@ -19,25 +19,13 @@ namespace ToiletRoyale
 
 		public ToiletRoyaleGame()
 		{
+
+			Log.Info("Game Started");
+
 			if ( IsServer )
 			{
-				foreach(toiletspot toilet in All.OfType<toiletspot>() ) 
-				{
-					Toilets.Add(
-					new Toilet()
-					{
-						Transform = new Transform()
-						{
-							Position = toilet.Position,
-							Rotation = toilet.Rotation,
-							Scale = 1.2f
-						}
-					} ); ;
-				}
-
 				_ = new ToiletRoyaleHud();
 			}
-
 			Current = this;
 		}
 
@@ -45,8 +33,6 @@ namespace ToiletRoyale
 		public override void ClientJoined( Client client )
 		{
 			base.ClientJoined( client );
-
-			Log.Info(Toilets.Count);
 
 			var player = new ToiletRoyalePlayer();
 			client.Pawn = player;
@@ -56,19 +42,12 @@ namespace ToiletRoyale
 
 		public virtual void MoveToEmptyToilet( Entity pawn )
 		{
-			List<Toilet> EmptyToilets = Toilets.FindAll( toilet => toilet.Claimer == null );
+			var toilets = All.OfType<toiletspot>().Where( x => x.Claimer is null );
 
-			if ( EmptyToilets != null && EmptyToilets.Count > 0 )
-			{
-				int RandomToiletIndex = Rand.Int( 0, EmptyToilets.Count - 1 );
-
-				pawn.Transform = EmptyToilets[RandomToiletIndex].Transform;
-				EmptyToilets[RandomToiletIndex].Claimer = pawn;
-			}
-			else
-			{
-				Log.Info( "Can't find empty toilet!" );
-			}
+			var targetToilet = toilets.FirstOrDefault();
+			pawn.Transform = targetToilet.Transform;
+			pawn.ResetInterpolation();
+			targetToilet.Claimer = pawn;
 		}
 
 		public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
